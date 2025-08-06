@@ -13,17 +13,27 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   namespace: roboshop
-  name: roboshop-junior
-rules:
-- apiGroups: [""] # "" indicates the core API group
-  resources: ["pods"] # nouns
-  verbs: ["get", "watch", "list","create"] # actions
-- apiGroups: ["apps"]
-  #
-  # at the HTTP level, the name of the resource for accessing Deployment
-  # objects is "deployments"
-  resources: ["deployments"]
-  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  name: roboshop-trainee
+subjects:
+# you can specify more than one "subject"
+- kind: User
+  name: suresh # name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  # "roleref" specifies the binding to a role / clusterrole
+  kind: Role # this must be role or clusterrole
+  name: roboshop-trainee
+  apiGroup: rbac.authorization.k8s.io
+# rules:
+# - apiGroups: [""] # "" indicates the core API group
+#   resources: ["pods"] # nouns
+#   verbs: ["get", "watch", "list","create"] # actions
+# - apiGroups: ["apps"]
+#   #
+#   # at the HTTP level, the name of the resource for accessing Deployment
+#   # objects is "deployments"
+#   resources: ["deployments"]
+#   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 # apiVersion: rbac.authorization.k8s.io/v1
 # kind: Role
