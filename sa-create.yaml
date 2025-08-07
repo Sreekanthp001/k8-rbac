@@ -5,5 +5,5 @@ metadata:
     eks.amazonaws.com/role-arn: 
   labels:
     app.kubernetes.io/managed-by: eksctl 
-  name: roboshop-mysql-secret-reader
+  name: roboshop-mysql-secret-reader1
   namespace: roboshop
